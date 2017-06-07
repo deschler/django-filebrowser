@@ -99,7 +99,7 @@ class FileBrowseField(CharField):
         return self.to_python(value)
 
     def get_prep_value(self, value):
-        if not value:
+        if not value or not hasattr(value, 'path'):
             return value
         return value.path
 
